@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/jquery.jgfeed.js" type="text/javascript"></script>
+    <script src="js/aiub.js"></script>
+
+
+
+  </head>
+  <body ng-app="aiubapp">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+
+    -->
+    <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+      <ion-nav-back-button class="button-icon ion-arrow-left-c">
+      </ion-nav-back-button>
+    </ion-nav-bar>
+             
+    <ion-nav-view animation="slide-left-right"></ion-nav-view>
+
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <script id="tabs.html" type="text/ng-template">
+      <ion-tabs class="tabs-icon-top tabs-positive">
+
+        <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+          <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="How it works" icon="ion-ios7-information" href="#/tab/howto">
+          <ion-nav-view name="howto-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="About" icon="ion-ios7-world" ui-sref="tabs.about">
+          <ion-nav-view name="about-tab"></ion-nav-view>
+        </ion-tab>
+
+      </ion-tabs>
+    </script>
+
+    <script id="home.html" type="text/ng-template">
+      <ion-view title="AIUB Simple Notice">
+        <ion-content>
+          <ion-refresher pulling-text="Pull To Refresh" on-refresh="refreshTasks()"
+            refreshing-text="Fetching ..." refreshing-icon="ion-loading-c"
+          ></ion-refresher>
+          <div id="aiub_notice" class="list">
+                <a class="item item-icon-left">Swipe down to load</a>
+          </div>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    
+
+    <script id="howto.html" type="text/ng-template">
+      <ion-view title="How it works">
+        <ion-content class="padding">
+          <h3>Simple XML parsing</h3>
+          <p>xml rss feed to json then angular to populate in apps</p>
+          <p>Built with ionic and cordova</p>
+          <p>alpha release @2015</p>         
+        </ion-content>
+      </ion-view>
+    </script>
+
+   
+
+    <script id="about.html" type="text/ng-template">
+      <ion-view title="About">
+        <ion-content>
+          <br>
+          <p>source available @<p>
+          <h4>https://github.com/shemul/aiub_pocket</h4>
+          <p>fork deploy push</p>
+        </ion-content>
+      </ion-view>
+    </script>
+
+
+  </body>
+</html>
