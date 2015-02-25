@@ -1,4 +1,20 @@
+function alertDismissed() {
+		     navigator.app.exitApp();
+}
+
 function loadNotice () {
+	if(navigator.connection.type == Connection.NONE)
+	{
+		
+		navigator.notification.alert(
+		"No Internet connectivity",  // message
+		alertDismissed,         // callback
+		'Network issue',            // title
+		'Close'                  // buttonName
+		);
+		
+	}
+
 	$.jGFeed("http://www.aiub.edu/activities/notices/feed/",
 	  function(feeds){
 	    // Check for errors
@@ -21,3 +37,19 @@ function loadNotice () {
 	}, 10);
 
 }
+
+function checkConnection() {
+        var networkState = navigator.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        alert('Connection type: ' + states[networkState]);
+    }

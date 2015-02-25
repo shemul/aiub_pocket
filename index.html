@@ -18,6 +18,24 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+    <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        navigator.splashscreen.hide();
+       
+    }
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        window.open = cordova.InAppBrowser.open;
+    }
+
+
+
+    </script>
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/jquery-latest.min.js" type="text/javascript"></script>
@@ -69,7 +87,7 @@
             refreshing-text="Fetching ..." refreshing-icon="ion-loading-c"
           ></ion-refresher>
           <div id="aiub_notice" class="list">
-                <a class="item item-icon-left">Swipe down to load</a>
+                <a class="item item-icon-left">Pull down to refresh</a>
           </div>
         </ion-content>
       </ion-view>
@@ -81,7 +99,7 @@
       <ion-view title="How it works">
         <ion-content class="padding">
           <h3>Simple XML parsing</h3>
-          <p>xml rss feed to json then angular to populate in apps</p>
+          <p>xml rss feed to json then angular for populate in apps</p>
           <p>Built with ionic and cordova</p>
           <p>alpha release @2015</p>         
         </ion-content>
